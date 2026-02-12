@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For my wife Bhuvana❤️</title>
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    padding: 60px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    width: 500px;
+    position: relative;
+    z-index: 10;
+}
+h1 {
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 40px;
+}
+.btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    position: absolute;
+    transition: left 0.8s ease, top 0.8s ease;
+    z-index: 10;
+}
+#yesBtn { background:#ff4b7d; color:#fff; left:25%; top:65%; }
+#yesBtn:hover { transform: scale(1.1); }
+#noBtn { background:#444; color:#fff; left:55%; top:65%; }
+#message {
+    font-size: 32px;
+    color: white;
+    margin-top: 20px;
+    display: none;
+    animation: popIn 1s ease forwards;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff4b7d, 0 0 30px #ffcc00;
+}
+@keyframes popIn { from {opacity:0; transform: scale(0.5);} to{opacity:1; transform: scale(1);} }
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: floatUp 5s linear infinite;
+}
+@keyframes floatUp { 0%{transform:translateY(0);opacity:1;} 100%{transform:translateY(-900px);opacity:0;} }
+.confetti, .heartConfetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: fall 4s linear forwards;
+}
+@keyframes fall { 0% { transform: translateY(-20px) rotate(0deg);} 100% { transform: translateY(100vh) rotate(720deg);} }
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    opacity: 0.9;
+    animation: fireworkAnim 1s ease-out forwards;
+}
+@keyframes fireworkAnim { 0% { transform: scale(1) translate(0,0); opacity:1;} 100%{transform: scale(2) translate(var(--x),var(--y)); opacity:0;} }
+.doll {
+    position: absolute;
+    font-size: 30px;
+    animation: dance 1s ease-in-out infinite alternate;
+}
+@keyframes dance { 0% { transform: translateX(0px);} 100% { transform: translateX(20px);} }
+.flower {
+    position: absolute;
+    font-size: 24px;
+    animation: rise 6s linear forwards;
+}
+@keyframes rise { 0% { transform: translateY(100vh) rotate(0deg);} 100% { transform: translateY(-50px) rotate(360deg); } }
+.shake { animation: shakeScreen 0.5s; }
+@keyframes shakeScreen { 0% { transform: translate(0,0);} 25%{ transform:translate(-5px,5px);}50%{transform:translate(5px,-5px);}75%{transform:translate(-5px,5px);}100%{transform:translate(0,0);} }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="mainHeading">Will You Be My Valentine? ❤️</h1>
+    <div id="message">🎉 She said YES! </br>Happy Valentine’s Day dear wife😘 ❤️ Bhuvana ❤️</br>❤️Love You Forever❤️</div>
+    <button id="yesBtn" class="btn">Yes 💖</button>
+    <button id="noBtn" class="btn">No 😢</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const message = document.getElementById("message");
+const heading = document.getElementById("mainHeading");
+const container = document.querySelector(".container");
+
+// No button movement
+noBtn.addEventListener("mouseover", function() {
+    noBtn.style.position = "absolute";
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+    noBtn.style.left = Math.random()*maxX + "px";
+    noBtn.style.top = Math.random()*maxY + "px";
+    document.body.appendChild(noBtn);
+});
+
+// Party effects
+function spawnConfetti() {
+    const c = document.createElement("div");
+    c.classList.add("confetti");
+    c.style.left = Math.random()*window.innerWidth+"px";
+    c.style.backgroundColor=["#ff4b7d","#ffcc00","#00e6e6","#ffffff","#ff66ff"][Math.floor(Math.random()*5)];
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+}
+function spawnHeart(){
+    const h=document.createElement("div"); 
+    h.classList.add("heart"); 
+    h.innerHTML="❤️"; 
+    h.style.left=Math.random()*window.innerWidth+"px"; 
+    h.style.bottom="0px"; 
+    document.body.appendChild(h); 
+    setTimeout(()=>h.remove(),5000);
+}
+function spawnTopConfetti(){ 
+    const c=document.createElement("div"); 
+    c.classList.add("confetti"); 
+    c.style.left=Math.random()*window.innerWidth+"px"; 
+    c.style.top="-10px"; 
+    c.style.width="8px"; 
+    c.style.height="8px"; 
+    c.style.backgroundColor=["#ff4b7d","#ffcc00","#00e6e6","#ffffff","#ff66ff"][Math.floor(Math.random()*5)]; 
+    document.body.appendChild(c); 
+    setTimeout(()=>c.remove(),4000);
+}
+function spawnFirework(){ 
+    const f=document.createElement("div"); 
+    f.classList.add("firework"); 
+    f.style.left=Math.random()*window.innerWidth+"px"; 
+    f.style.top=Math.random()*window.innerHeight+"px"; 
+    const angle=Math.random()*2*Math.PI; 
+    const dist=Math.random()*150+50; 
+    f.style.setProperty('--x',dist*Math.cos(angle)+'px'); 
+    f.style.setProperty('--y',dist*Math.sin(angle)+'px'); 
+    f.style.backgroundColor=["#ff4b7d","#ffcc00","#00e6e6","#ffffff","#ff66ff"][Math.floor(Math.random()*5)]; 
+    document.body.appendChild(f); 
+    setTimeout(()=>f.remove(),1200);
+}
+function shootFireworks(){
+    const x = Math.random()*window.innerWidth;
+    const y = window.innerHeight;
+    for(let i=0;i<15;i++){
+        const angle=Math.random()*Math.PI- Math.PI/2;
+        const dist=Math.random()*100+50;
+        const f=document.createElement("div"); 
+        f.classList.add("firework"); 
+        f.style.left=x+"px"; 
+        f.style.top=y+"px"; 
+        f.style.setProperty('--x',dist*Math.cos(angle)+'px'); 
+        f.style.setProperty('--y',-dist*Math.sin(angle)+'px'); 
+        f.style.backgroundColor=["#ff4b7d","#ffcc00","#00e6e6","#ffffff","#ff66ff"][Math.floor(Math.random()*5)]; 
+        document.body.appendChild(f); 
+        setTimeout(()=>f.remove(),1200);
+    }
+}
+
+// Dancing dolls (boy & girl)
+function spawnDoll(){
+    const d = document.createElement("div");
+    d.classList.add("doll");
+    d.innerHTML = Math.random() > 0.5 ? "💃" : "🕺";
+    d.style.left = Math.random()*window.innerWidth+"px";
+    d.style.bottom = "0px";
+    document.body.appendChild(d);
+    setTimeout(()=>d.remove(),4000);
+}
+
+// Rising flowers
+function spawnFlower(){
+    const f = document.createElement("div");
+    f.classList.add("flower");
+    const flowers = ["🌹","🌸","🌺","💐"];
+    f.innerHTML = flowers[Math.floor(Math.random()*flowers.length)];
+    f.style.left = Math.random()*window.innerWidth+"px";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),6000);
+}
+
+// Start party on Yes
+yesBtn.addEventListener("click",function(){
+    heading.style.display="none";
+    message.style.display="block";
+    yesBtn.style.display="none";
+    noBtn.style.display="none";
+    container.classList.add("shake");
+    setTimeout(()=>container.classList.remove("shake"),500);
+
+    // Infinite effects
+    setInterval(spawnConfetti,200);
+    setInterval(spawnHeart,400);
+    setInterval(spawnTopConfetti,150);
+    setInterval(spawnFirework,300);
+    setInterval(shootFireworks,800);
+    setInterval(spawnDoll,1500);
+    setInterval(spawnFlower,700);
+});
+</script>
+
+</body>
+</html>
